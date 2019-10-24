@@ -2,6 +2,8 @@
 session_start();
 include "../controler/connexion_bdn.php";
 include "../views/header.php";
+$db = connexionBase();
+$reponse = $db->query("SELECT pro_photo,pro_id,pro_libelle,pro_prix FROM produits");
 ?>
 
 <!-- Jumbotron -->
@@ -12,11 +14,11 @@ include "../views/header.php";
             <h1 id="titleNewProduct" class="animated slideInDown">Inscrivez vous à notre newsletter</h1>
             <form action="" method="post">
                 <!-- Content -->
-                <div class="md-form form-lg animated flipInX formProduct" >
+                <div class="md-form form-lg animated flipInX delay-1s formProduct" >
                     <input id="inputNewsProduct" type="text" id="form1" class="form-control">
                     <label id="inputNewsProduct"for="form1"><i class="fas fa-envelope"></i> Entrer un email :</label>     
                 </div>
-                <button type="submit" class="btn btn-primary animated fadeInUp"><i class="fas fa-paper-plane"></i> Recevoir nos news</button>            
+                <button id="btnFormProduct" type="submit" class="btn btn-primary animated fadeInUp delay-1s"><i class="fas fa-paper-plane"></i> Recevoir nos news</button>                 
             </form>
         </div>
     </div>
@@ -24,11 +26,6 @@ include "../views/header.php";
 
 <!-- Section: product -->
 <section class="text-center my-5">
-    <?php
-    $db = connexionBase();
-    $reponse = $db->query("SELECT pro_photo,pro_id,pro_cat_id,pro_ref,pro_libelle,pro_prix,pro_stock,pro_couleur,pro_d_ajout,pro_d_modif,pro_bloque FROM produits");
-    ?>
-
     <div class="container">
         <div class="row">
             <?php
@@ -37,6 +34,8 @@ include "../views/header.php";
                 <!-- Grid column -->
                 <div class="col-4 col-sm-4 col-sm-4 w-100 p-3">
                     <!-- Card -->
+                    <!--Facebook-->
+
                     <div class="card card-cascade wider card-ecommerce">
                         <!-- Card image -->
                         <div class="view view-cascade overlay">                     
@@ -60,30 +59,20 @@ include "../views/header.php";
                                     <?php echo "<strong>" . $donnees["pro_prix"] . "</strong>" ?> 
                                 </span>
                                 <span class="float-right">
-                                    <button type="button" class="btn red darken-1">
-                                        <?php echo "<a id='linkProduct' href=\"formulaire_detail.php?pro_id=" . $donnees["pro_id"] . "\">" ?>details
-                                        <i id="iProduct" class="fas fa-eye grey-text ml-3"></i>
-                                    </button>
-                                    <?php if (isset($_SESSION['login'])) { ?>
-                                        <button type="button" class="btn red darken-1">
-                                            <a id="linkProduct" href="../views/formulaire_detail.php">Modifier</a>                                          
-                                            <i id="iProduct" class="fas fa-pencil-alt"></i>
-                                        <?php } ?>
                                     </button>  
                                 </span>
                             </div>
                         </div>
+                        <button type="button" id="buttonDetailProduct" class="btn btn-primary">
+                            <a href="../views/detailProduct.php" style="color:white;">Details</a>
+                        </button>
                     </div>  
                 </div>
-                <?php
-            }
-            $reponse->closeCursor();
-            ?>
-        </div>            
+            <?php } $reponse->closeCursor(); ?>
+        </div>
+        <a id="iReturnProduct"href="../views/produit.php"><i class="fas fa-angle-up"></i></a>        
     </div> 
 </section>
-
-<a id="iReturnProduct"href="../views/produit.php"><i class="fas fa-angle-up"></i></a>
 
 <?php
 include "../views/footer.php";

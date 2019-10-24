@@ -13,14 +13,18 @@ $requete->execute();
 $row = $requete->fetch(PDO::FETCH_OBJ);
 ?>
 <form action="#" method="post" name="Formulaire_ajout_pro" enctype="multipart/form-data">
-    <h1>Ajo<span>ut</span> d'un <span>pro</span>duit</h1>
+    <h1 id="titleProductAdd">Ajout d'un produit</h1>
     <div class ="divider1"></div>
+    <div id="buttonPageProduct">
+        <button type="submit" class="btn btn-danger" name="envoyer">Ajouter <i class="fas fa-plus"></i></button>
+        <button class="btn btn-danger"><a id="linkAdminButton" href="../views/EspaceAdmin.php">Retour <i class="fas fa-undo"></i></a></button>
+    </div>
     <div class="container mt-5">
         <div class="row">
             <div class="mt-1">
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="reference">Référence :</label>
+                        <label class="libelleProductAdd" for="reference"><i class="fas fa-hashtag"></i> Référence :</label>
                         <input class="form-control" name="reference" type="text" id ="reference" value="<?php if (isset($_POST['reference'])) echo $_POST['reference']; ?>">                 
                         <span class='erreur' id="reference"></span>
                         <span class="erreur"><?php
@@ -30,7 +34,7 @@ $row = $requete->fetch(PDO::FETCH_OBJ);
                             ?></span>         
                     </div>			
                     <div class="form-group col-md-6">
-                        <label for="categorie">Catégorie :</label>
+                        <label class="libelleProductAdd" for="categorie"><i class="fas fa-clipboard-list"></i> Catégorie :</label>
                         <select class="form-control" name="categorie" type="text" id="categorie">
                             <?php
                             while (($row2 = $requete_cat->fetch(PDO::FETCH_OBJ))) {
@@ -46,7 +50,7 @@ $row = $requete->fetch(PDO::FETCH_OBJ);
                             ?></span>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="libelle">Libellé :</label>
+                        <label class="libelleProductAdd" for="libelle"><i class="fas fa-id-card"></i> Libellé :</label>
                         <input class="form-control" name="libelle" type="text" id="libelle" value="<?php if (isset($_POST['libelle'])) echo $_POST['libelle']; ?>">
                         <span class="erreur"><?php
                             if (!empty($TabErreurs["libelle"])) {
@@ -56,7 +60,7 @@ $row = $requete->fetch(PDO::FETCH_OBJ);
                         <span class="erreur" id="erreurLibelle"></span>
                     </div>
                     <div class="form-group col-md-6">
-                        <label>Description :</label>
+                        <label class="libelleProductAdd"><i class="fas fa-tasks"></i> Description :</label>
                         <textarea class="form-control" name="description" type="text" id="description" value='<?php if (isset($_POST['description'])) echo $_POST['description']; ?>'></textarea> 
                         <span class = "erreur"><?php
                             if (!empty($TabErreurs["description"])) {
@@ -66,7 +70,7 @@ $row = $requete->fetch(PDO::FETCH_OBJ);
                         <span class="erreur" id ="erreurDesc"></span>		
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="prix">Prix produit :</label>
+                        <label class="libelleProductAdd" for="prix"><i class="fas fa-euro-sign"></i> Prix produit :</label>
                         <input class="form-control" name="prix" type="text" id="prix" value='<?php if (isset($_POST['prix'])) echo $_POST['prix']; ?>'>
                         <span class="erreur"><?php
                             if (!empty($TabErreurs["prix"])) {
@@ -76,7 +80,7 @@ $row = $requete->fetch(PDO::FETCH_OBJ);
                         <span class="erreur" id="erreurPrix"></span>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="stock">Stock :</label>
+                        <label class="libelleProductAdd" for="stock"><i class="fas fa-archive"></i> Stock :</label>
                         <input class="form-control" name="stock" type="text" id="stock" value='<?php if (isset($_POST['stock'])) echo $_POST['stock']; ?>'>
                         <span class="erreur"><?php
                             if (!empty($TabErreurs["stock"])) {
@@ -86,7 +90,7 @@ $row = $requete->fetch(PDO::FETCH_OBJ);
                         <span class="erreur" id="erreurStock"></span>								  
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="couleur">Couleur :</label>
+                        <label class="libelleProductAdd" for="couleur"><i class="fas fa-palette"></i> Couleur :</label>
                         <input type="text" class="form-control" name="couleur" id="couleur" value='<?php if (isset($_POST['couleur'])) echo $_POST['couleur']; ?>'>
                         <span class="erreur" id="erreurCouleur"></span>
                         <span class="erreur"><?php
@@ -96,7 +100,7 @@ $row = $requete->fetch(PDO::FETCH_OBJ);
                             ?></span>				      		
                     </div>
                     <div class="radio col-md-4 mt-4 ml-3">
-                        <label for="bloque"> Produit bloqué :</label>
+                        <label class="libelleProductAdd" for="bloque"><i class="fas fa-unlock-alt"></i> Produit bloqué :</label>
                         <input type="radio" id="radioBTN" name="radioBTN" value="0"> Non
                         <input type="radio" id="radioBTN" name="radioBTN" value="1"> Oui  
                     </div>
@@ -105,7 +109,7 @@ $row = $requete->fetch(PDO::FETCH_OBJ);
                     <div class ="form-row">
                         <div class="form-group">
                             <div class="form-group">
-                                <label for="exampleFormControlFile1">Télécharger une image :</label>
+                                <label class="libelleProductAdd" for="exampleFormControlFile1">Télécharger une image :</label>
                                 <input type="file" name='file' class="form-control-file" id="exampleFormControlFile1">
                                 <span class="erreur" id="erreurFile"></span>
                                 <span class = "erreur"><?php
@@ -114,8 +118,7 @@ $row = $requete->fetch(PDO::FETCH_OBJ);
                                     }
                                     ?></span>	    
                             </div>
-                            <button type="submit" name="envoyer" id="envoyer" class="btn btn-outline-primary">Envoyer</button>
-                            <a href="produit.php" type="buttom" id="annuler" class="btn btn-outline-primary">Retour</a>
+
                         </div>
                     </div>
                 </div>
@@ -123,8 +126,6 @@ $row = $requete->fetch(PDO::FETCH_OBJ);
         </div>
     </div>
 </form>
-<?php 
-
+<?php
 include "footer.php";
-
 ?>

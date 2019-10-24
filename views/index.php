@@ -1,9 +1,7 @@
 <?php
-
 session_start();
 include "../views/header.php";
 include "../controler/controllerLogin.php";
-
 ?>
 <!-- Jumbotron -->
 <div class="card card-image mt-5" style="background-image: url(https://cdn.pixabay.com/photo/2015/09/09/16/05/forest-931706_960_720.jpg);">
@@ -28,7 +26,7 @@ include "../controler/controllerLogin.php";
                 </div>
                 <div class="modal-body mx-3">
                     <div class="md-form mb-5">
-                        
+
                         <i class="fas fa-user prefix grey-text"></i>
                         <label data-error="wrong" data-success="right" for="form34">Votre nom :</label>
                         <input type="text" id="form34" class="form-control validate">
@@ -86,6 +84,5 @@ include "../controler/controllerLogin.php";
 </div>
 
 <?php
-
 include "footer.php";
 ?>

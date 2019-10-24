@@ -137,12 +137,6 @@ include '../controler/verifFormulaireContact.php';
     </div>
 </div>
 </form>
-
-<h4 id="Copyright">Copyright, 2019</h4>
-<div class="divider2"></div>
-
-<div class="navbarFooter">
-    <?php
-    include "../views/footer.php";
-    ?>
-</div>
+<?php
+include "../views/footer.php";
+?>

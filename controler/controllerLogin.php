@@ -1,6 +1,6 @@
 <?php
 
-require "../controler/connexion_bdn.php";
+include "../controler/connexion_bdn.php";
 $db = connexionBase();
 
 // Déclaration de mes regex.
@@ -10,6 +10,7 @@ $passwordPattern = "/^(?=.{10,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$/";
 // Déclaration d'un tableau d'erreur.
 $error = [];
 
+// Controle de saisie.
 if (isset($_POST['submit'])) {
     // Vérificaion de l'identifiant. 
     if (!empty($_POST['login'])) {
@@ -24,7 +25,7 @@ if (isset($_POST['submit'])) {
     // Vérification du mot de passe.
     if (!empty($_POST['password'])) {
         if (preg_match($passwordPattern, $_POST['password'])) {
-            $password = password_hash(htmlspecialchars($_POST['password']), PASSWORD_DEFAULT);
+            $password = htmlspecialchars($_POST['password']);
         } else {
             $error['password'] = 'Mot de passe invalide.';
         }
@@ -33,15 +34,35 @@ if (isset($_POST['submit'])) {
     }
 
     if (count($error) === 0) {
+        // Déclaration de mes sessions.
         $_SESSION['login'] = $login;
-        $_SESSION['password'] = $password;
-        header("location:../views/index.php");
+
+        
+        // Vérification du role.
+        $queryRole = $db->prepare('SELECT role, FROM utilisateur WHERE login = :login');
+        $queryRole->bindValue(':login', $login);
+        $queryRole->execute();
+        $resultRole = $queryRole->fetch(PDO::FETCH_ASSOC);
+        
+        if ($resultRole['admin'] == $login ){
+            $_SESSION['admin'] = $resultRole['admin'];
+        }
+      
+        
+        
+        // Vérification pour effectué la connexion.
+        $querySigin = $db->prepare('SELECT login, mot_de_passe FROM utilisateur WHERE login = :login');
+        $querySigin->bindValue(':login', $login);
+        $querySigin->execute();
+        $resultSigin = $querySigin->fetch(PDO::FETCH_ASSOC);
+
+        if (password_verify($password, $resultSigin['mot_de_passe'])) {
+            header("location:../views/index.php");
+        } else {
+            $error['passwordVerif'] = 'Le mot de passe existe pas.';
+        }
     }
-
-
-    $requeteLogin = $db->query("SELECT login, mot_de_passe FROM utilisateur");
 }
-
 if (isset($_POST['signout'])) {
 
     unset($_SESSION);

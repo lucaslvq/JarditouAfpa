@@ -45,15 +45,19 @@
                             <a id="navBarLink" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i id="navBarLink" class="fas fa-user"></i> <?= isset($_SESSION['login']) ? $_SESSION['login'] : 'Profil' ?></a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-                                <a class="dropdown-item" href="../views/signIn.php"><i class="fas fa-laptop iProfilList"></i>Connexion</a>
-                                <?php if (isset($_SESSION['login'])) { ?>
-                                <a class="dropdown-item" href="../views/listeProduit.php"><i class="fas fax1 fa-list-alt"></i></i><span class="linkProfil">Liste produit</span></a>
+                                <?php if (!isset($_SESSION['login'])) { ?>
+                                    <a class="dropdown-item" href="../views/signIn.php"><i class="fas fa-laptop iProfilList"></i>Connexion</a>
                                 <?php } ?>
-                                <a class="dropdown-item" href="../views/signUp.php"><i class="fab fa-wpforms iProfilList"></i>Inscription</a>                             
+                                <?php if (isset($_SESSION['login'])){ ?>
+                                    <a class="dropdown-item" href="../views/EspaceAdmin.php"><i class="fas fax1 fa-list-alt"></i></i><span class="linkProfil">Espace administrateur</span></a>
+                                <?php } ?>
+                                <?php if (!isset($_SESSION['login'])) { ?>
+                                    <a class="dropdown-item" href="../views/signUp.php"><i class="fab fa-wpforms iProfilList"></i>Inscription</a>                             
+                                <?php } ?> 
                                 <?php if (isset($_SESSION['login'])) { ?>
                                     <a class="dropdown-item" href="../controler/deconnexion.php"><i class="fas fa-2x fa-sign-out-alt"></i>Déconnexion</a>
                                 <?php } ?>
-                                    
+
                             </div>
                         </li>
                     </ul>
@@ -62,3 +66,4 @@
             <!--/.Navbar -->
         </header>
         <!-- Fin NavBar -->
+

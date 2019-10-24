@@ -3,15 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/Jarditou/views/index.php</file>
-            <file>file:/C:/wamp64/www/Jarditou/views/produit.php</file>
+            <file>file:/C:/wamp64/www/Jarditou/views/forgotPasseword.php</file>
+            <file>file:/C:/wamp64/www/Jarditou/controler/controllerSignUp.php</file>
             <file>file:/C:/wamp64/www/Jarditou/views/signUp.php</file>
-            <file>file:/C:/wamp64/www/Jarditou/assets/css/style.css</file>
-            <file>file:/C:/wamp64/www/Jarditou/views/footer.php</file>
-            <file>file:/C:/wamp64/www/Jarditou/controler/connexion_bdn.php</file>
+            <file>file:/C:/wamp64/www/Jarditou/controler/controllerLogin.php</file>
+            <file>file:/C:/wamp64/www/Jarditou/views/forgotPassewordComfirm.php</file>
             <file>file:/C:/wamp64/www/Jarditou/views/header.php</file>
-            <file>file:/C:/wamp64/www/Jarditou/views/formulaire_detail.php</file>
-            <file>file:/C:/wamp64/www/Jarditou/assets/js/script.js</file>
+            <file>file:/C:/wamp64/www/Jarditou/controler/controllerForgotPasswordComfirm.php</file>
+            <file>file:/C:/wamp64/www/Jarditou/views/signIn.php</file>
         </group>
     </open-files>
 </project-private>

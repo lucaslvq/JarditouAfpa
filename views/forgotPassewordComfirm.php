@@ -1,8 +1,9 @@
 <?php
 session_start();
-include "../controler/controllerLogin.php";
+include "../controler/controllerForgotPasswordComfirm.php";
 include "../views/header.php";
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,17 +16,15 @@ include "../views/header.php";
         <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/css/mdb.min.css" rel="stylesheet">
         <!-- Insertion CSS -->
         <link rel="stylesheet" href="../assets/css/style.css">
-        <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+        <link href="https://fonts.goFogleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lexend+Giga&display=swap" rel="stylesheet">
         <title>Accueil</title>
         <!-- Insertion du PHP -->
     </head>
     <!-- NavBar -->
     <body>
-
-    <body>
         <div class="containers containerSignIn">
-            <h1 class="animated bounceInDown">Jarditou vous souhaite le bonjour. </h1>
+            <h1 class="animated bounceInDown">Mot de passe oublié ?</h1>
         </div>
         <div class="container h-100">
             <div class="d-flex justify-content-center h-100">
@@ -39,41 +38,33 @@ include "../views/header.php";
                             </span>
                         </div>
                     </div>
-                    <h1 id="titleLogin">Connexion</h1>
+                    <h1 id="titleLogin">Nouveau mot de passe</h1>
                     <div id="dividerSignIn"></div>
                     <div class="d-flex justify-content-center form_container">
                         <form action="" method="post">
-                            <div class="input-group mb-3">
-                                <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                </div>
-                                <input type="text" name="login" class="form-control input_user" value="<?= isset($_POST['login']) ? $_POST['login'] : '' ?>" placeholder="Login :">
-                                <i  class="fas fa-info iInfoMdp" data-toggle="tooltip" data-placement="right" title="Le login ne peut pas contenir de caractère spéciaux."></i>
-                                <span class="erreurFormSignUp"><?= !empty($error["login"]) ? $error["login"] : "" ?></span>
-                                <span class="erreurFormSignUp"><?= !empty($error["verifLogin"]) ? $error["verifLogin"] : "" ?></span>
-                            </div>
-                            <div class="input-group mb-2">
+                            <div class="input-group mb-1">
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fas fa-key"></i></span>
                                 </div>
-                                <input type="password" name="password" class="form-control input_pass" value="" placeholder="Mot de passe :">
-                                <i  class="fas fa-info iInfoMdp" data-toggle="tooltip" data-placement="right" title="Le mot de passe doit contenir : 10 caractères dont : 1 lettre en majuscule, 1 chiffre, et 1 caractère spéciaux."></i>
+                                <input type="password" name="password" class="form-control input_pass" value='<?= isset($_POST["password"]) ? $_POST["password"] : "" ?>' placeholder="Mot de passe :">
+                                <?php if (isset($error["password"])) { ?>
+                                    <i  class="fas fa-info iInfoMdp" data-toggle="tooltip" data-placement="right" title="Le mot de passe doit contenir : 10 caractères dont : 1 lettre en majuscule, 1 chiffre, et 1 caractère spéciaux."></i>
+                                <?php } ?>
                                 <span class="erreurFormSignUp"><?= !empty($error["password"]) ? $error["password"] : "" ?></span>
-                                <span class="erreurFormSignUp"><?= !empty($error["passwordVerif"]) ? $error["passwordVerif"] : "" ?></span> 
                             </div>
-                            <div class="form-group mt-5">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customControlInline">
-                                    <label class="custom-control-label" for="customControlInline">Accepté les conditions</label>
+                            <div class="input-group mb-1">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
                                 </div>
-                                <div class="d-flex justify-content-center mt-3 login_container">
-                                    <button type="submit" name="submit" class="btn login_btn animated fadeInUp delais-1s">Connexion <i class="fas fa-sign-in-alt"></i></button>
-                                   
-                                </div>
+                                <input type="password" name="passwordComfirm" class="form-control input_pass" value='<?= isset($_POST["passwordComfirm"]) ? $_POST["passwordComfirm"] : "" ?>' placeholder="Confirmation :">
+                                <span class="erreurFormSignUp"><?= !empty($error["passwordComfirm"]) ? $error["passwordComfirm"] : "" ?></span>
+                            </div>
+                            <div class="d-flex justify-content-center mt-3 login_container">
+                                <button type="submit" name="submit" class="btn login_btn animated fadeInUp delais-1s">Envoyer <i class="fas fa-paper-plane"></i></button>
                             </div>
                         </form>
                     </div>
-                    <p class="mt-2 text-center"><a style="color:#c0392b" href="../views/forgotPasseword.php">Mot de passe oublier ?</a></p>
+                    <p class="mt-2 text-center"><a style="color:#c0392b" href="../views/signIn.php">Votre mot de passe vous reviens ?</a></p>
                     <p class="mt-2 text-center">Vous souhaitez vous inscrire ? <a style="color:#c0392b" href="../views/signUp.php">Par ici s'il vous plait.</a></p>
                     <p class="mt-2 mb-3 text-center">&copy; 2017-2019</p>
                 </div>

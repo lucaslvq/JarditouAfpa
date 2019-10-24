@@ -44,11 +44,6 @@ html {
 /* CSS page index */
 
 
-/*.card{
-    border-radius: 20%;
-    box-shadow: 3px 3px 3px 3px #c0392b !important;
-}*/
-
 .dividerCards{
     width: 40%;
     height: 2px;
@@ -148,12 +143,6 @@ table img{
     font-family: 'Lexend Giga', sans-serif;
     color: white;
 }
-
-h1 span{
-    color : white;
-    font-family: 'Pacifico', cursive;
-}
-
 .iconContact{
     font-size: 1.5rem;
     margin-left: 1%;  
@@ -163,6 +152,7 @@ h1 span{
     margin-top: 6%;
     text-align: center;
     font-family: 'Pacifico', cursive;
+    margin-bottom: 5rem;
 }
 .erreur{
     color: #c0392b !important;
@@ -242,10 +232,10 @@ h1 span{
 /* CSS page Product */
 
 .formProduct{
-   width: 50rem;
-   margin-left: 30%;
-   margin-bottom: 4rem;
-   margin-top: 3rem;
+    width: 50rem;
+    margin-left: 30%;
+    margin-bottom: 4rem;
+    margin-top: 3rem;
 }
 #inputNewsProduct{
     color: white !important;
@@ -278,8 +268,65 @@ h1 span{
     font-size: 3rem;
     color: white !important;
 }
+#btnFormProduct{
+    border-radius: 5rem;
+}
 
-/* Page detail */ 
+#buttonDetailProduct{
+    border-radius: 5rem;
+    width: 12rem;
+    margin-bottom: 2rem;
+    margin-left: 5rem;
+    background: #c0392b !important;
+}
+
+
+.profil .yacht-info__list li {
+    width:25%;
+}
+.card-detail{
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    overflow: hidden;
+    float: left;
+    width: 100%;
+    margin: 15px 0px;
+}
+.descDetail{
+    float: left;
+    width: 100%;
+    position: relative;
+    padding: 25px 30px 30px;
+}
+.margin-top--22{
+    margin-top:-22px;
+}
+.card-detail h4{
+    color: #FF9800;
+}
+.yacht-info__list img{
+    width:20px;
+    padding-right:5px;
+}
+.yacht-info__list {
+    list-style: none;
+    padding: 0;
+    font-size: 16px;
+}
+.yacht-info__list li {
+    padding: 6px 0;
+    font-size: 15px;
+    display: table;
+    height: 100%;
+    line-height: 21px;
+    float: left;
+    width: 50%;
+    margin-bottom: 5px;
+}
+
+
+/* CSS page modif */ 
 
 #imgDetail{
     margin-left: 30px;
@@ -292,6 +339,24 @@ h1 span{
     height: 500px;
     background: #343a40;
     margin-top: 40px;
+}
+#labelDetail{
+    font-family: Lexend Giga, sans-serif;
+}
+#titleDetailProduct{
+    text-align: center;
+    font-family: Lexend Giga, sans-serif;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+#spanDetailProduct{
+    color: black;
+}
+
+#menuButtonModif{
+    margin-top: 2rem;
+    margin-left: 45.5rem;
 }
 
 
@@ -315,10 +380,22 @@ h1 span{
 }
 #titleSignUpForm{
     color: white;
-    margin-top: 6rem;
+    margin-top: 4rem;
     text-align: center;
-   font-family: Pacifico, cursive;
+    font-family: Pacifico, cursive;
 }
+
+#passewordIndication{
+    font-family: Lexend Giga, sans-serif;
+    text-align: center;
+    font-size: 0.8rem;
+}
+.iInfoMdp{
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    margin-left: 1rem;
+}
+
 /* CSS Page signIn */
 
 .containerSignIn{
@@ -415,4 +492,61 @@ h1 span{
     font-family: Lexend Giga, sans-serif;
 }
 
+/* CSS page admin */
 
+#titleAdminPage{
+    color: white;
+    font-family: Lexend Giga, sans-serif;
+    margin-left: 40rem;
+    margin-top: 2rem;
+}
+#linkAdminPage{
+    margin-left: 53rem;
+    margin-top: 2rem;
+}
+#linkAdminButton{
+    color: white;
+}
+#linkLibelleProduct{
+    color: #c0392b !important;
+}
+
+/* CSS page ajoutProduct */
+
+#titleProductAdd{
+    color: white;
+    font-family: Lexend Giga, sans-serif;
+    margin-left: 45rem;
+    margin-top: 2rem;   
+    margin-bottom: 1rem;
+}
+
+.libelleProductAdd{
+    font-family: Lexend Giga, sans-serif;
+}
+
+#buttonPageProduct{
+    margin-left: 51rem;
+    margin-top: 2rem;
+}
+
+/* Css page ListProduct */
+
+.listProductAdmin{
+    margin-bottom: 2rem;
+}
+.iReturnListProduct{
+    font-size: 3rem;
+    color: white !important;
+    margin-left: 59rem;
+    margin-bottom: 2rem;
+}
+
+/* CSS page forgotPassword */ 
+
+.sendMail {
+    text-align: center;
+    color: white;
+    width: 20rem;
+    font-family: Lexend Giga, sans-serif;
+}
